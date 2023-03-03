@@ -9,12 +9,14 @@ import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
+import java.io.IOException;
 import java.io.OutputStream;
 import java.util.UUID;
-import javax.servlet.http.HttpServletResponse;
 
+import jakarta.servlet.http.HttpServletResponse;
 import me.desair.tus.server.HttpHeader;
 import me.desair.tus.server.HttpMethod;
+import me.desair.tus.server.exception.TusException;
 import me.desair.tus.server.exception.UploadInProgressException;
 import me.desair.tus.server.upload.UploadId;
 import me.desair.tus.server.upload.UploadInfo;
@@ -93,7 +95,7 @@ public class DownloadGetRequestHandlerTest {
     }
 
     @Test
-    public void testWithCompletedUploadWithoutMetadata() throws Exception {
+    public void testWithCompletedUploadWithoutMetadata() throws TusException, IOException {
         final UploadId id = new UploadId(UUID.randomUUID());
 
         UploadInfo info = new UploadInfo();

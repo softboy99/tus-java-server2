@@ -1,6 +1,7 @@
 package me.desair.tus.server.exception;
 
-import javax.servlet.http.HttpServletResponse;
+
+import jakarta.servlet.http.HttpServletResponse;
 
 /**
  * Exception thrown when we receive a HTTP request with a method name that we do not support

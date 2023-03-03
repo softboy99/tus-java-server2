@@ -1,6 +1,7 @@
 package me.desair.tus.server.exception;
 
-import javax.servlet.http.HttpServletResponse;
+
+import jakarta.servlet.http.HttpServletResponse;
 
 /**
  * Exception thrown when the client sends a request for a checksum algorithm we do not support

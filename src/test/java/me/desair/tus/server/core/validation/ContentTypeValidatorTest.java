@@ -7,6 +7,7 @@ import static org.junit.Assert.fail;
 import me.desair.tus.server.HttpHeader;
 import me.desair.tus.server.HttpMethod;
 import me.desair.tus.server.exception.InvalidContentTypeException;
+import me.desair.tus.server.exception.TusException;
 import org.junit.Before;
 import org.junit.Test;
 import org.springframework.mock.web.MockHttpServletRequest;
@@ -25,7 +26,7 @@ public class ContentTypeValidatorTest {
     }
 
     @Test
-    public void validateValid() throws Exception {
+    public void validateValid()  {
         servletRequest.addHeader(HttpHeader.CONTENT_TYPE, ContentTypeValidator.APPLICATION_OFFSET_OCTET_STREAM);
 
         try {
@@ -38,7 +39,7 @@ public class ContentTypeValidatorTest {
     }
 
     @Test(expected = InvalidContentTypeException.class)
-    public void validateInvalidHeader() throws Exception {
+    public void validateInvalidHeader() throws TusException {
         servletRequest.addHeader(HttpHeader.CONTENT_TYPE, "application/octet-stream");
 
         validator.validate(HttpMethod.PATCH, servletRequest, null, null);
